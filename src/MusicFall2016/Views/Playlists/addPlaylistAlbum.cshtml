@@ -9,7 +9,7 @@
         <div class="form-group">
             <label asp-for="PlaylistID" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select class="form-control inline" asp-for="PlaylistID" asp-items="ViewBag.playlists">
+                <select class="form-control inline" asp-for="PlaylistID" asp-items="ViewBag.playlists.PlaylistName">
                     <option value="0">Select an artist</option>
                 </select>
             </div>

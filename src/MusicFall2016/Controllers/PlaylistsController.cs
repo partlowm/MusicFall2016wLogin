@@ -131,5 +131,33 @@ namespace MusicFall2016.Controllers
             return View(playlistalbums);
 
         }
+        [Authorize]
+        public IActionResult Delete(int? id)
+        {
+            ViewBag.ArtistID = new SelectList(_context.Artists, "ArtistID", "Name");
+            ViewBag.GenreID = new SelectList(_context.Genres, "GenreID", "Name");
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Playlist playlist = _context.Playlist.SingleOrDefault(a => a.PlaylistID == id);
+            if (playlist == null)
+            {
+                return NotFound();
+            }
+            ViewBag.AlbumsList = _context.Playlist.Where(a => a.PlaylistID == playlist.PlaylistID);
+            return View(playlist);
+
+        }
+        [Authorize]
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            Playlist playlist = _context.Playlist.Find(id);
+            _context.Playlist.Remove(playlist);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
     }
 }

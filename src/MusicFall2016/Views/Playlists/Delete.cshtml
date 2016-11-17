@@ -1,5 +1,13 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model MusicFall2016.Models.Playlist
 @{
+    ViewBag.Title = "Delete";
 }
+<h1>Delete Playlist @Model.PlaylistName</h1>
+<div class="form">
+    <form asp-action="Delete" class="form-horizontal">
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn-success" />
+            <a class="btn btn-default" href="http://localhost:63854/Albums">Cancel</a>
+        </div>
+    </form>
+</div>
