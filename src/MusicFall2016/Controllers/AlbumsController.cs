@@ -145,9 +145,9 @@ namespace MusicFall2016.Controllers
         }
         [Authorize]
         [HttpPost]
-        public IActionResult Delete(Album album)
+        public IActionResult Delete(int id)
         {
-
+            Album album = _context.Albums.SingleOrDefault(a => a.AlbumID == id);
             _context.Albums.Remove(album);
             _context.SaveChanges();
             return RedirectToAction("Index");

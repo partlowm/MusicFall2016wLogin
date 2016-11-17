@@ -153,7 +153,7 @@ namespace MusicFall2016.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            Playlist playlist = _context.Playlist.Find(id);
+            Playlist playlist = _context.Playlist.SingleOrDefault(a => a.PlaylistID == id);
             _context.Playlist.Remove(playlist);
             _context.SaveChanges();
             return RedirectToAction("Index");
