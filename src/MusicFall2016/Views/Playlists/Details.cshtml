@@ -1,0 +1,20 @@
+﻿@model MusicFall2016.Models.PlayListAlbums
+@{
+    ViewBag.Title = "Details";
+}
+<h1>@Model.Playlist.PlaylistName</h1>
+<br />
+<table class="table">
+    <tbody>
+        <tr><td><b>Albums:</b></td></tr>
+        @foreach (var playlist in ViewBag.AlbumsList)
+        {
+            <tr><td><a asp-controller ="Playlist" asp-action="Details" asp-route-id="@playlist.PlaylistID">@playlist.Album.Title</a></td></tr>
+
+        }
+
+
+    </tbody>
+</table>
+<a class="btn btn-default" href="http://localhost:63854/Albums">Add more albums</a>
+<a class="btn btn-default" href="http://localhost:63854/Playlists">Back To Playlists</a>

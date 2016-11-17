@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MusicFall2016.Models.Playlist>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Playlists for:</h1>
+<br />
+<a class="btn btn-success btn-lg col-md-3" href="http://localhost:63854/Playlists/Create">Create New Playlist</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>            
+        </tr>
+    </thead>
+    @foreach (var Playlist in Model)
+    {
+        <tr>
+            <td><a class="btn btn-default" asp-action="Details" asp-route-id="@Playlist.PlaylistID">@Playlist.PlaylistName</a></td>
+            <td><a class="btn btn-default" asp-action="Edit" asp-route-id="@Playlist.PlaylistID">Rename</a></td>
+        </tr>
+    }
+</table>

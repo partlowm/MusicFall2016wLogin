@@ -1,0 +1,15 @@
+﻿@model MusicFall2016.Models.Album
+@{
+    ViewBag.Title = "Delete";
+}
+<h1>Delete This Album?</h1>
+<div class="form">
+    <form asp-action="Delete" class="form-horizontal">
+        <p>Title: @Model.Title</p>
+        <p>Artist: @Model.Artist.Name</p>
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn-success" />
+            <a class="btn btn-default" href="http://localhost:2264/Albums">Cancel</a>
+        </div>
+    </form>
+</div>

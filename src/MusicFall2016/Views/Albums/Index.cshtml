@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MusicFall2016.Models.Album>
+@{
+    ViewData["Title"] = "Albums";
+}
+<h2>Albums</h2>
+<br />
+<a class="btn btn-success btn-lg col-md-3" href="http://localhost:63854/Albums/Create">Add Album</a>
+<br />
+<br />
+<br />
+<div>
+    @using (Html.BeginForm())
+    { <p>@Html.TextBox("searchString") <input type="submit" value="Search" /></p> }
+</div>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>@Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.AlbumNameSortParam })</th>
+            <th>@Html.ActionLink("Artist", "Index", new { sortOrder = ViewBag.ArtistNameSortParam })</th>
+            <th>@Html.ActionLink("Genre", "Index", new { sortOrder = ViewBag.GenreNameSortParam })</th>
+            <th>@Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParam })</th>
+            <th>Likes</th>
+        </tr>
+    </thead>
+    @foreach (var album in Model)
+    {
+        <tr>
+            <td>@album.Title</td>
+            <td>@album.Artist.Name</td>
+            <td>@album.Genre.Name</td>
+            <td>@album.Price</td>
+            <td>@album.Likes</td>
+            <td>
+                <form class="inline" asp-action="Likes" asp-route-id="@album.AlbumID" method="post">
+                    <button class="btn btn-sm btn-default" type="submit">Like</button>
+                    <a class="btn btn-default" asp-controller="PlaylistController" asp-action="addPlaylistAlbum" asp-route-id="@album.AlbumID">Playlist+</a>
+                    <a class="btn btn-default" asp-action="Details" asp-route-id="@album.AlbumID">Details</a>
+                    <a class="btn btn-default" asp-action="Edit" asp-route-id="@album.AlbumID">Edit</a>
+                    <a class="btn btn-default" asp-action="Delete" asp-route-id="@album.AlbumID">Delete</a>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

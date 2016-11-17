@@ -1,0 +1,17 @@
+﻿@model MusicFall2016.Models.Genre
+@{
+    ViewBag.Title = "Details";
+}
+<h2> Albums in @Model.Name</h2>
+<table class="table">
+    <tbody>
+        @foreach (var album in ViewBag.AlbumsList)
+        {
+            <tr><td><asp-controller ="Genre" asp-action="Details" asp-route-id="@album.GenreID">@album.Title</td></tr>
+
+        }
+
+
+    </tbody>
+</table>
+<a class="btn btn-default" href="http://localhost:63854/Genre">Back To list</a>

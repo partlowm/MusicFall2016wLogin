@@ -1,0 +1,54 @@
+﻿@model MusicFall2016.Models.Album
+
+@{ ViewData["Title"] = "Add Album";}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<h2>Add Albums</h2>
+<div class="form">
+    <form asp-action="Create" class="form-horizontal">
+        <div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" autofocus />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="Artist">Artist</label>
+            <div class="col-md-10">
+                <select class="form-control inline" asp-for="ArtistID" asp-items="ViewBag.ArtistID">
+                    <option value="0">Select an artist</option>
+                </select>
+                or
+               @*<input class="form-control inline" asp-for="Artist.Name" type="text" placeholder="Create new artist" />*@
+            </div>
+            <span asp-validation-for="Artist" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="Genre">Genre</label>
+            <div class="col-md-10">
+                <select class="form-control inline" asp-for="GenreID" asp-items="ViewBag.GenreID">
+                    <option value="0">Select a genre</option>
+                </select>
+                or
+                @*<input class="form-control inline" asp-for="Genre.Name" type="text" placeholder="Create new genre" />*@
+            </div>
+            <span asp-validation-for="Genre" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input type="number" min="0.01" max="100.0" step="any" asp-for="Price" class="form-control" autofocus />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn-success btn-lg" />
+            </div>
+        </div>
+    </form>
+</div>
+
+
